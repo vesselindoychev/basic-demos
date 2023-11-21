@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Edit {{ pet.pet_name }} the {{ pet.pet_type }}</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'edit pet' pet.pk %}">
+        {{ pet_form }}
+        {% csrf_token %}
+        <button>Edit</button>
+    </form>
+{% endblock %}

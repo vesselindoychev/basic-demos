@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>The Employees App</h1>
+
+
+    <h2>Bound (Django) Form</h2>
+
+
+    <h2>Unbound (Pure HTML) Form</h2>
+    <form>
+        <input type="text" required placeholder="Name">
+        <input type="number" required placeholder="Age">
+        <input type="range" required>
+        <input type="email" required placeholder="Email">
+
+        <select>
+            <option>One</option>
+            <option>Two</option>
+            <option>Three</option>
+        </select>
+
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="radio" name="radios">
+        <input type="radio" name="radios">
+        <input type="radio" name="radios">
+        <button>Save</button>
+    </form>
+
+
+{% endblock %}

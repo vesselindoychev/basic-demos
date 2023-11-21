@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="{% url 'create employee' %}">
+        {{ employee_form }}
+        {% csrf_token %}
+        <button>Save</button>
+    </form>
+
+    <form method="get" action="{% url 'create employee' %}">
+        {{ employee_order_form }}
+        <button>Order</button>
+    </form>
+
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <th class="col">First Name</th>
+            <th class="col">Last Name</th>
+            <th class="col">EGN</th>
+            <th class="col">Job Title</th>
+            <th class="col">Company</th>
+            <th class="col">Department</th>
+            <th class="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.first_name }}</td>
+                <td>{{ employee.last_name }}</td>
+                <td>{{ employee.egn }}</td>
+                <td>{{ employee.job_title }}</td>
+                <td>{{ employee.company }}</td>
+                <td>{{ employee.department.get_name_display }}</td>
+                <td><a href="{% url 'edit employee' employee.pk %}">Edit</a></td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Create Pet</h1>
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'create pet' %}">
+        {{ pet_form }}
+        {% csrf_token %}
+        <button>Create</button>
+    </form>
+
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <th>Pet name</th>
+            <th>Pet type</th>
+            <th>Pet age</th>
+            <th>Owner</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pet in pets %}
+            <tr>
+                <td>{{ pet.pet_name }}</td>
+                <td>{{ pet.pet_type }}</td>
+                <td>{{ pet.age }}</td>
+                {% for owner in pet.person_set.all %}
+                    <td>{{ owner.first_name }}</td>
+                {% endfor %}
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
